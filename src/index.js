@@ -19,8 +19,8 @@ const rootReducer = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reduxStore = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  dataReducer,
+  compose(applyMiddleware(thunk))
 );
 
 const rootElement = document.getElementById("root");

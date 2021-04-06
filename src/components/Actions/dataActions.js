@@ -1,8 +1,8 @@
-export function setBlogPost(blogPost) {
+export function setBlogPosts(blogPosts) {
     return function (dispatch) {
         dispatch({
-            type: "SET_BLOGPOST",
-            blogPost: blogPost
+            type: "SET_BLOGPOSTS",
+            blogPosts: blogPosts
         });
     };
 }

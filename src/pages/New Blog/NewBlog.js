@@ -1,15 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setBlogPost } from "../../components/Actions/dataActions";
+import { setBlogPosts } from "../../components/Actions/dataActions";
 
 export default function NewBlogPost() {
 
     const [title, setTitle] = React.useState("");
     const [paragraph, setParagraph] = React.useState("");
     const [author, setAuthor] = React.useState("");
+    const [id, setId] = React.useState(0);
 
     const dispatch = useDispatch();
-    const blogPost = useSelector((state) => state.blogPost);
+    const blogPosts = useSelector((state) => state.blogPosts);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -17,10 +18,11 @@ export default function NewBlogPost() {
         const newBlogPost = {
             title: title,
             paragraph: paragraph,
-            author: author
+            author: author,
+            id: id
         };
 
-        dispatch(setBlogPost([...blogPost, newBlogPost]));
+        dispatch(setBlogPosts([...blogPosts, newBlogPost]));
     }
 
     return (
@@ -52,6 +54,15 @@ export default function NewBlogPost() {
                     onChange={(e) => setAuthor(e.target.value)}
                     value={author}
                     type="text"
+                    className="form-control"
+                />
+            </div>
+            <div className="mb-3">
+                <label className="form-label">ID</label>
+                <input
+                    onChange={(e) => setId(e.target.value)}
+                    value={id}
+                    type="number"
                     className="form-control"
                 />
             </div>

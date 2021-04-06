@@ -1,13 +1,21 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 
 import Home from "./pages/Home/Home";
 import Detail from "./pages/Detail/Detail";
 import NewBlog from "./pages/New Blog/NewBlog";
+import { useDispatch } from 'react-redux';
+import { setBlogPosts } from './components/Actions/dataActions';
+import { blogPostList } from './blogPostList';
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setBlogPosts(blogPostList));
+  }, []);
 
   return (
     <div className="App">

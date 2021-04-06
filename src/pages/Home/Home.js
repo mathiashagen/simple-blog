@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { blogPostList } from "../../blogPostList";
 import BlogPost from "../../components/BlogPost/BlogPost";
@@ -15,6 +16,8 @@ export default function Home() {
         );
         setSearchResults(results);
     }, [searchWord]);
+
+    const blogPosts = useSelector((state) => state.blogPosts);
 
     return (
         <div
@@ -33,7 +36,7 @@ export default function Home() {
                 onChange={handleChange}
             />
 
-            {searchResults.map(function (item) {
+            {blogPosts.map(function (item) {
                 return (
                     <BlogPost
 

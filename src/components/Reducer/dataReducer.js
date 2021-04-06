@@ -1,13 +1,13 @@
 const initialState = {
-    blogPost: []
+    blogPosts: []
 };
 
 function dataReducer(state = initialState, action) {
     switch (action.type) {
-        case "SET_BLOGPOST":
+        case "SET_BLOGPOSTS":
             return {
                 ...state,
-                blogPost: action.blogPost
+                blogPosts: action.blogPosts
             };
         default:
             return state;
