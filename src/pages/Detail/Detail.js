@@ -1,13 +1,15 @@
 import React from "react";
 import { blogPostList } from "../../blogPostList";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setBlogPosts } from "../../components/Actions/dataActions";
 
 
 export default function Detail() {
     const [blogPost, setBlogPost] = React.useState(null);
 
     const blogPosts = useSelector((state) => state.blogPosts);
+    const dispatch = useDispatch();
 
     let { id } = useParams();
 
@@ -24,6 +26,8 @@ export default function Detail() {
 
     //TODO
     function remove(id) {
+        let remainingBlogposts = blogPosts.filter((blogPost) => blogPost.id !== id);
+        dispatch(setBlogPosts(remainingBlogposts));
         console.log(id);
     }
 
