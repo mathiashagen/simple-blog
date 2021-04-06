@@ -7,17 +7,20 @@ import BlogPost from "../../components/BlogPost/BlogPost";
 export default function Home() {
     const [searchWord, setSearchWord] = React.useState("");
     const [searchResults, setSearchResults] = React.useState([]);
+    
+
+    const blogPosts = useSelector((state) => state.blogPosts);
+
     const handleChange = event => {
         setSearchWord(event.target.value);
     };
     React.useEffect(() => {
-        const results = blogPostList.filter(blogPostList =>
-            blogPostList.title.includes(searchWord)
+        const results = blogPosts.filter(blogPosts =>
+            blogPosts.title.includes(searchWord)
         );
         setSearchResults(results);
     }, [searchWord]);
-
-    const blogPosts = useSelector((state) => state.blogPosts);
+    
 
     return (
         <div
@@ -30,13 +33,14 @@ export default function Home() {
             }}
         >
             <input
+                defaultValue=""
                 type="text"
                 placeholder="Search"
                 value={searchWord}
                 onChange={handleChange}
             />
 
-            {blogPosts.map(function (item) {
+            {searchResults.map(function (item) {
                 return (
                     <BlogPost
 
