@@ -1,8 +1,9 @@
 import React from "react";
-import { blogPostList } from "../../blogPostList";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setBlogPosts } from "../../components/Actions/dataActions";
+import { Link } from "react-router-dom";
+
 
 
 export default function Detail() {
@@ -36,7 +37,7 @@ export default function Detail() {
             <h1>{blogPost.title}</h1>
             <p>{blogPost.paragraph}</p>
             <h4 style={{ paddingBottom: 30 }}>Author: {blogPost.author}</h4>
-            <button type="button" className="btn btn-danger" onClick={() => remove(blogPost.id)}>Delete</button>
+            <Link to="/home"><button type="button" className="btn btn-danger" onClick={() => remove(blogPost.id)}>Delete</button></Link>
         </div>
     ) : null;
 }

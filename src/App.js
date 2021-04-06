@@ -15,14 +15,14 @@ export default function App() {
 
   useEffect(() => {
     dispatch(setBlogPosts(blogPostList));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
       <Navbar />
-
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route path="/details/:id" component={Detail} />
         <Route path="/new-blog" component={NewBlog} />
       </Switch>

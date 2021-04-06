@@ -4,19 +4,13 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from "react-redux";
-import { combineReducers, createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import dataReducer from "./components/Reducer/dataReducer";
 import thunk from "redux-thunk";
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-
-const rootReducer = combineReducers({
-  data: dataReducer
-});
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reduxStore = createStore(
   dataReducer,

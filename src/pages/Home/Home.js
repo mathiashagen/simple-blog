@@ -1,13 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { blogPostList } from "../../blogPostList";
 import BlogPost from "../../components/BlogPost/BlogPost";
 
 export default function Home() {
     const [searchWord, setSearchWord] = React.useState("");
     const [searchResults, setSearchResults] = React.useState([]);
-    
+
 
     const blogPosts = useSelector((state) => state.blogPosts);
 
@@ -19,8 +18,8 @@ export default function Home() {
             blogPosts.title.includes(searchWord)
         );
         setSearchResults(results);
-    }, [searchWord]);
-    
+    }, [searchWord, blogPosts]);
+
 
     return (
         <div
